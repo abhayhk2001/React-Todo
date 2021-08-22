@@ -1,0 +1,13 @@
+.task-card {
+  display: flex;
+  width: 35vw;
+  min-height: 4em;
+  padding: 0.3em 4em;
+  margin: 0.5em 5em;
+  border-radius: 50em;
+  background-color: #b961d6;
+  align-items: center;
+  /* TODO: Decide and implement Linear Gradient*/
+  /* background-image: linear-gradient(to right, #b961d6); */
+  justify-content: left;
+}

@@ -1,0 +1,17 @@
+.task-list {
+  background: rgba(0, 19, 128, 0.3);
+  padding-top: 1.25em;
+  display: relative;
+  max-width: 60em;
+  height: 35em;
+  border-radius: 15%;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.header {
+  margin-bottom: 1em;
+}
