@@ -2,28 +2,33 @@ import React, { useState, useEffect } from "react";
 import Multiselect from "multiselect-react-dropdown";
 import "./static/Form.css";
 
-function Form(props) {
-  const [task, setTask] = useState("");
+function EditForm(props) {
+  const [task, setTask] = useState(props.editVals.title);
   const [selected, setSelected] = useState([]);
   const [options, setOptions] = useState([]);
-  const [recur, setRecur] = useState(false);
+  const [recur, setRecur] = useState(props.editVals.recurring);
+  const [comp, setComp] = useState(props.editVals.completed);
   const handleSubmit = (e) => {
     e.preventDefault();
-    fetch(process.env.REACT_APP_API_URL + "/add-task/", {
-      method: "POST",
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify({
-        title: task,
-        completed: false,
-        recurring: recur,
-        contexts: selected.map((value, index) => {
-          return value.id;
+    console.log(task, selected, recur);
+    fetch(
+      process.env.REACT_APP_API_URL + "/update-task/" + props.editVals.id + "/",
+      {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify({
+          title: task,
+          completed: comp,
+          recurring: recur,
+          contexts: selected.map((value, index) => {
+            return value.id;
+          }),
         }),
-      }),
-    }).then(() => {
-      props.reRenderList();
+      }
+    ).then(() => {
+      props.reRenderEditList();
       setSelected([]);
       setRecur(false);
       setTask("");
@@ -35,6 +40,7 @@ function Form(props) {
       .then((response) => response.json())
       .then((data) => {
         setOptions(data);
+        console.log(data);
       });
     return () => {
       setTask("");
@@ -57,17 +63,25 @@ function Form(props) {
             setTask(e.target.value);
           }}
         />
-        <span className="recurring">Recurring</span>
         <div className="switch">
+          <span className="recurring">Recurring</span>
           <input
             type="checkbox"
             value={recur}
             onChange={() => {
-              console.log({ recur });
               setRecur(!recur);
             }}
           />
-          <span className="slider round"></span>
+        </div>
+        <div className="switch">
+          <span className="recurring">Completed</span>
+          <input
+            type="checkbox"
+            value={recur}
+            onChange={() => {
+              setComp(!comp);
+            }}
+          />
         </div>
         <Multiselect
           className="context-select"
@@ -76,10 +90,10 @@ function Form(props) {
           onSelect={onSelect}
           displayValue="name"
         />
-        <input type="submit" value="Add Task" />
+        <input type="submit" value="Edit Task" />
       </form>
     </>
   );
 }
 
-export default Form;
+export default EditForm;

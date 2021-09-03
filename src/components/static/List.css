@@ -1,15 +1,21 @@
 .task-list {
   background: rgba(0, 19, 128, 0.3);
-  padding-top: 1.25em;
+  padding: 1.25em 10px;
   display: relative;
   max-width: 60em;
+  overflow-y: auto;
   height: 35em;
-  border-radius: 15%;
+  border-radius: 5.25em;
   border: 1px solid rgba(255, 255, 255, 0.18);
 
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
+  margin: 2em 3em;
+}
+
+.task-list::-webkit-scrollbar {
+  display: none;
 }
 
 .header {

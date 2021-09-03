@@ -1,5 +1,6 @@
 .task-card {
   display: flex;
+  flex-direction: column;
   width: 35vw;
   min-height: 4em;
   padding: 0.3em 4em;
@@ -10,4 +11,22 @@
   /* TODO: Decide and implement Linear Gradient*/
   /* background-image: linear-gradient(to right, #b961d6); */
   justify-content: left;
+}
+
+.info {
+  display: none;
+}
+
+.task-card:hover > .info {
+  display: flex;
+  flex-direction: column;
+}
+
+.options {
+  display: none;
+}
+
+.task-card:hover > .options {
+  display: flex;
+  flex-direction: row;
 }
