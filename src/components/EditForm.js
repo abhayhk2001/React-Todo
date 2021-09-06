@@ -12,7 +12,9 @@ function EditForm(props) {
     e.preventDefault();
     console.log(task, selected, recur);
     fetch(
-      process.env.REACT_APP_API_URL + "/update-task/" + props.editVals.id + "/",
+      "http://abhayhk.pythonanywhere.com/api/update-task/" +
+        props.editVals.id +
+        "/",
       {
         method: "POST",
         headers: {
@@ -36,7 +38,7 @@ function EditForm(props) {
   };
 
   useEffect(() => {
-    fetch(process.env.REACT_APP_API_URL + "/context")
+    fetch("http://abhayhk.pythonanywhere.com/api/context")
       .then((response) => response.json())
       .then((data) => {
         setOptions(data);

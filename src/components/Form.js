@@ -9,7 +9,7 @@ function Form(props) {
   const [recur, setRecur] = useState(false);
   const handleSubmit = (e) => {
     e.preventDefault();
-    fetch(process.env.REACT_APP_API_URL + "/add-task/", {
+    fetch("http://abhayhk.pythonanywhere.com/api/add-task/", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
@@ -31,7 +31,7 @@ function Form(props) {
   };
 
   useEffect(() => {
-    fetch(process.env.REACT_APP_API_URL + "/context")
+    fetch("http://abhayhk.pythonanywhere.com/api/context")
       .then((response) => response.json())
       .then((data) => {
         setOptions(data);
