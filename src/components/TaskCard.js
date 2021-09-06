@@ -3,11 +3,11 @@ import "./static/TaskCard.css";
 
 function TaskCard(props) {
   const deleteTask = () => {
-    fetch(process.env.REACT_APP_API_URL + "/delete-task/" + props.task.id).then(
-      () => {
-        props.reRender();
-      }
-    );
+    fetch(
+      "http://abhayhk.pythonanywhere.com/api/delete-task/" + props.task.id
+    ).then(() => {
+      props.reRender();
+    });
   };
   const editTask = () => {
     props.setEdit(props.task);
@@ -25,10 +25,10 @@ function TaskCard(props) {
       )}
 
       <div className="info">
-        {props.task.contexts.map((ind, index) => {
+        {props.contexts.map((ind, index) => {
           return (
             <div key={index}>
-              <h4>{props.contexts[ind].name}</h4>
+              <h4>{props.contexts[ind]}</h4>
             </div>
           );
         })}
