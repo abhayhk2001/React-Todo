@@ -12,8 +12,8 @@ function EditForm(props) {
     e.preventDefault();
     console.log(task, selected, recur);
     fetch(
-      "http://abhayhk.pythonanywhere.com/api/update-task/" +
-        props.editVals.id +
+      "https://abhayhk.pythonanywhere.com/api/update-task/" +
+        props?.editVals?.id +
         "/",
       {
         method: "POST",
@@ -38,7 +38,7 @@ function EditForm(props) {
   };
 
   useEffect(() => {
-    fetch("http://abhayhk.pythonanywhere.com/api/context")
+    fetch("https://abhayhk.pythonanywhere.com/api/context")
       .then((response) => response.json())
       .then((data) => {
         setOptions(data);

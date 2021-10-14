@@ -4,7 +4,7 @@ import "./static/TaskCard.css";
 function TaskCard(props) {
   const deleteTask = () => {
     fetch(
-      "http://abhayhk.pythonanywhere.com/api/delete-task/" + props.task.id
+      "https://abhayhk.pythonanywhere.com/api/delete-task/" + props.task.id
     ).then(() => {
       props.reRender();
     });
@@ -14,21 +14,21 @@ function TaskCard(props) {
   };
   return (
     <div className="task-card">
-      {props.task.recurring ? (
+      {props?.task?.recurring ? (
         <>
           {" "}
-          <h2>{props.task.title}</h2>
+          <h2>{props?.task?.title}</h2>
           <h4>recurring</h4>
         </>
       ) : (
-        <h2>{props.task.title}</h2>
+        <h2>{props?.task?.title}</h2>
       )}
 
       <div className="info">
-        {props.contexts.map((ind, index) => {
+        {props?.contexts?.map((ind, index) => {
           return (
             <div key={index}>
-              <h4>{props.contexts[ind]}</h4>
+              <h4>{ind?.name}</h4>
             </div>
           );
         })}

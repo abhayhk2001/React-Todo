@@ -6,20 +6,17 @@ function List(props) {
   const [todoList, setTodoList] = useState([]);
   const [options, setOptions] = useState([]);
   useEffect(() => {
-    fetch("http://abhayhk.pythonanywhere.com/api/all-tasks")
+    fetch("https://abhayhk.pythonanywhere.com/api/all-tasks")
       .then((response) => response.json())
       .then((data) => setTodoList(data));
-    fetch("http://abhayhk.pythonanywhere.com/api/context")
+    fetch("https://abhayhk.pythonanywhere.com/api/context")
       .then((response) => response.json())
       .then((data) => {
-        var h = setOptions(data);
-        console.log(h);
-        console.log("hi");
-        console.log(data);
+        setOptions(data);
       });
   }, []);
   const reRenderList = () => {
-    fetch("http://abhayhk.pythonanywhere.com/api/all-tasks")
+    fetch("https://abhayhk.pythonanywhere.com/api/all-tasks")
       .then((response) => response.json())
       .then((data) => setTodoList(data));
   };
@@ -35,7 +32,7 @@ function List(props) {
               <TaskCard
                 key={index}
                 task={task}
-                contexts={task.contexts.map((ind, index) => {
+                contexts={task?.contexts?.map((ind, index) => {
                   return options[ind];
                 })}
                 reRender={reRenderList}
